@@ -9,6 +9,5 @@ def index(response):
 def search(response):
     return render(response, "finder/search.html", {})
 
-def lists(response, id):
-    g_list = List.objects.get(id=id)
-    return render(response, "finder/lists.html", {"name":g_list.name})
+def mylists(response):
+    return render(response, "finder/mylists.html", {"lists":List.objects.all()})

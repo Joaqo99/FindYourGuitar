@@ -3,5 +3,7 @@
 {% block title %} - My lists {% endblock %}
 
 {% block content %}
-    <p>{{name}}</p>
+    {% for x in lists %}
+        <p>{{ x.name }}</p>
+    {% endfor %}
 {% endblock %}
