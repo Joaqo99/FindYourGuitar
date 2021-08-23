@@ -6,11 +6,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="https://kit.fontawesome.com/163b2e7bf3.js" crossorigin="anonymous"></script>
+        {% block style %}
 
+        {% endblock %}
     </head>
     <body>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <a class="navbar-brand" href="#">Find Your Guitar</a>
+            <a class="navbar-brand text-danger" href="#">Find Your Guitar</a>
           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
               <span class="navbar-toggler-icon"></span>
@@ -18,14 +20,14 @@
 
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
               <ul class="navbar-nav">
-                <li class="nav-item mx-3">
-                  <a class="nav-link" href="#"><i class="fas fa-home"></i></a>
+                <li class="nav-item mx-3 ">
+                  <a class="nav-link" href="/"><i class="fas fa-home text-danger"></i></a>
                 </li>
                 <li class="nav-item mx-3">
-                  <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                  <a class="nav-link" href="/search"><i class="fas fa-search text-danger"></i></a>
                 </li>
                 <li class="nav-item mx-3">
-                  <a class="nav-link" href="#"><i class="fas fa-clipboard-list"></i></a>
+                  <a class="nav-link" href="/mylists"><i class="fas fa-clipboard-list text-danger"></i></a>
                 </li>
               </ul>
             </div>
