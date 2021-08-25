@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'finder.apps.FinderConfig',
+    'list_tracker.apps.ListTrackerConfig',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'FindYourGuitar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\lucho\OneDrive\Escritorio\Programación\desarrollo web\FindYourGuitar\finder\templates\finder\index.html'],
+        'DIRS': [r'C:\Users\lucho\OneDrive\Escritorio\Programación\desarrollo web\FindYourGuitar\finder\templates\finder\index.html', r'C:\Users\lucho\OneDrive\Escritorio\Programación\desarrollo web\FindYourGuitar\list_tracker\templates\list_tracker\mylists.html'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

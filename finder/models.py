@@ -1,11 +1,5 @@
 from django.db import models
-
-# Create your models here.
-class List(models.Model):
-    name = models.CharField(max_length=250)
-
-    def __str__(self):
-        return self.name
+from list_tracker.models import List
 class Guitar(models.Model):
     g_list = models.ForeignKey(List, on_delete=models.CASCADE, null=True)
     brand = models.CharField(max_length=250, null=True)
