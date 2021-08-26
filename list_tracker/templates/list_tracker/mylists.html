@@ -4,6 +4,10 @@
 
 {% block style %}
     <style>
+        *{
+            margin-right: 0;
+        }
+
         .downarrow{
             transition: all 0.3s ;
         }
@@ -17,8 +21,28 @@
 {% block content %}
 
 <!-- --------------------------------- Create list ------------------------------------- -->
-
+    <div class="row mt-3">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10"><h3>Create a new list</h3></div>
+        <div class="col-sm-1 pr-0"></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <form method="post" action="/mylists/">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" name="create">Create</button>
+            </form>
+        </div>
+        <div class="col-sm-1 pr-0"></div>
+    </div>
 <!-- ------------------------------- Existing lists ------------------------------------ -->
+    <div class="row mt-3">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10"><h3>Your current lists</h3></div>
+        <div class="col-sm-1 pr-0"></div>
+    </div>
     <div id="accordion">
         {% for x in lists %}
             <div class="row mt-3">
@@ -37,6 +61,9 @@
                                 </div>
                             </div>
                             <div id="collapse{{ forloop.counter }}" class="collapse">
+                                {% if  x.guitar_set.all|length  == 0 %}
+                                    <div class="card-body">Empty list</div>
+                                {% else %}
                                 <div class="card-body">
                                     <table class="table table-hover">
                                         <thead>
@@ -61,11 +88,12 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                {% endif %}
                             </div>
                             </div>
                     </div>
                 </div>
-                <div class="col-sm-1"></div>
+                <div class="col-sm-1 pr-0"></div>
             </div>    
         {% endfor %}
     </div>
