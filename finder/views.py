@@ -11,11 +11,13 @@ def index(response):
 def search(response):
     if response.method == "POST":
         search_form = GuitarSearch(response.POST)
-        if form.is_valid():
-            guitar_brand = form.cleaned_data["brand"]
-            guitar_model = form.cleaned_data["g_model"]
-            guitar_list = form.cleaned_data["g_list"]
+        if search_form.is_valid():
+            guitar_brand = search_form.cleaned_data["brand"]
+            guitar_model = search_form.cleaned_data["g_model"]
+            guitar_list = search_form.cleaned_data["g_list"]
             search_group = Search()
+            search_group.save()
+            search_articles(guitar_brand, guitar_model, guitar_list, search_group, Guitar)
             results = Guitar.objects.get(search=search_group)
             return render(response, "finder/search.html", {"search_form":search_form, "results":results})
     else:
