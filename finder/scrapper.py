@@ -11,7 +11,7 @@ def search_articles(brand, g_model, g_list, search_group, db_model):
         instance.title = article.h2.text
         price_i = article.find(class_="price-tag").text
         price_ii = price_i.rsplit('s')[-1]
-        instance.price = int(str(price_ii.rsplit('$')[-1]))
+        instance.price = price_ii.rsplit('$')[-1]
         instance.link = article.find("a")["href"]
         instance.g_list = g_list
         instance.search = search_group
