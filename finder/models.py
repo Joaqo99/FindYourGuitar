@@ -14,7 +14,7 @@ class Guitar(models.Model):
     title = models.CharField(max_length=250, null=True)
     #description = models.TextField(max_length=2000, null=True)
     link = models.CharField(max_length=1000, null=True)
-    price = models.CharField(max_length=10, null=True)
+    price = models.IntegerField(max_length=10, null=True)
 
     def __str__(self):
         return f'{self.brand} {self.g_model} --- ID: {self.id}'
