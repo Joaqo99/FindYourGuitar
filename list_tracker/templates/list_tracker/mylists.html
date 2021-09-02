@@ -28,7 +28,7 @@
             <form method="post" action="#">
                 {% csrf_token %}
                 {{ form }}
-                <button type="submit" class="btn btn-success" name="create">Create</button>
+                <button type="submit" class="btn btn-success" name="createList">Create</button>
             </form>
         </div>
         <div class="col-sm-1 pr-0"></div>
@@ -45,48 +45,55 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-10">
                     <div class="list_container">
-                        <div class="card">
-                            <div class="card-header text-dark" style="background-color: #aaa;">
-                                <div class="row justify-content-between">
-                                    <div class="listname_container">{{ x.name }}</div>
-                                    <div class="icon_container text-right justify-content-end">
-                                        <a class="card-link justify-content-end mr-2" data-toggle="collapse" href="#collapse{{ forloop.counter }}">
-                                            <i class="fas fa-chevron-right arrow text-dark"></i>
-                                        </a>
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            <div class="card">
+                                <div class="card-header text-dark" style="background-color: #aaa;">
+                                    <div class="row justify-content-between">
+                                        <div class="listname_container">{{ x.name }}</div>
+                                        <div class="icon_container text-right justify-content-end">
+                                            <button type="submit" name="deleteItems" value="delete_{{ x.id }}_items">Delete selected items</button>
+                                            <button type="submit" name="deleteList" value="delete_{{ x.id }}_list">Delete List</button>
+                                            <a class="card-link justify-content-end mr-2" data-toggle="collapse" href="#collapse{{ forloop.counter }}">
+                                                <i class="fas fa-chevron-right arrow text-dark"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="collapse{{ forloop.counter }}" class="collapse">
-                                {% if  x.guitar_set.all|length  == 0 %}
-                                    <div class="card-body">Empty list</div>
-                                {% else %}
-                                <div class="card-body">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Brand</th>
-                                                <th scope="col">Model</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Title</th>
-                                                <th scope="col">Link</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for guitar in x.guitar_set.all %}
+                                <div id="collapse{{ forloop.counter }}" class="collapse">
+                                    {% if  x.guitar_set.all|length  == 0 %}
+                                        <div class="card-body">Empty list</div>
+                                    {% else %}
+                                    <div class="card-body">
+                                        <table class="table table-hover">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ guitar.brand }}</td>
-                                                    <td>{{ guitar.g_model }}</td>
-                                                    <td>$ {{ guitar.price }}</td>
-                                                    <td>{{ guitar.title }}</td>
-                                                    <td><a href="{{ guitar.link }}">Click here</a></td>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">Brand</th>
+                                                    <th scope="col">Model</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">Link</th>
                                                 </tr>
-                                                {% endfor %}
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                {% for guitar in x.guitar_set.all %}
+                                                    <tr>
+                                                        <td><input type="checkbox" value="delete" name="d{{guitar.id}}"></td>
+                                                        <td>{{ guitar.brand }}</td>
+                                                        <td>{{ guitar.g_model }}</td>
+                                                        <td>$ {{ guitar.price }}</td>
+                                                        <td>{{ guitar.title }}</td>
+                                                        <td><a href="{{ guitar.link }}">Click here</a></td>
+                                                    </tr>
+                                                    {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {% endif %}
                                 </div>
-                                {% endif %}
                             </div>
-                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-sm-1 pr-0"></div>
