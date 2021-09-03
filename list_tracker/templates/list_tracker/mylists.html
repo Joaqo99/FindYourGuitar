@@ -50,10 +50,12 @@
                             <div class="card">
                                 <div class="card-header text-dark" style="background-color: #aaa;">
                                     <div class="row justify-content-between">
-                                        <div class="listname_container">{{ x.name }}</div>
-                                        <div class="icon_container text-right justify-content-end">
-                                            <button type="submit" name="deleteItems" value="delete_{{ x.id }}_items">Delete selected items</button>
-                                            <button type="submit" name="deleteList" value="delete_{{ x.id }}_list">Delete List</button>
+                                        <div class="listname_container p-1" style="margin-top: auto; margin-bottom: auto; font-size: 1.1rem;">{{ x.name }}</div>
+                                        <div class="icon_container text-right justify-content-end"  style="margin-top: auto; margin-bottom: auto;">
+                                            <div class="buttons-menu" style="display: none;">
+                                                <button type="submit" name="deleteItems" value="delete_{{ x.id }}_items" class="btn btn-danger p-1">Delete selected items</button>
+                                                <button type="submit" name="deleteList" value="delete_{{ x.id }}_list" class="btn btn-danger p-1">Delete List</button>
+                                            </div>
                                             <a class="card-link justify-content-end mr-2" data-toggle="collapse" href="#collapse{{ forloop.counter }}">
                                                 <i class="fas fa-chevron-right arrow text-dark"></i>
                                             </a>
