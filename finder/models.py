@@ -1,6 +1,13 @@
 from django.db import models
 from list_tracker.models import List
 
+
+class Status(models.Model):
+    status_name = models.CharField(max_length=50, null=True)
+    status_id = models.BigAutoField(primary_key=True)
+
+    def __str__(self):
+        return self.status_name
 class Search(models.Model):
     date_time = models.DateTimeField(auto_now=True)
     articles = models.IntegerField(default=0)
